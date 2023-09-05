@@ -1,25 +1,21 @@
 # 1768 Merge Strings Alternately
 class Solution:
     def mergeAlternately(self, word1: str, word2: str) -> str:
-        smaller = None
-        bigger = None
-        w1_len = len(word1)
-        w2_len = len(word2)
-        if w1_len >= w2_len:
-            bigger = word1
-            smaller= word2
-        elif w1_len < w2_len:
-            bigger = word2
-            smaller= word1
+        min_len = min(len(word1), len(word2))
 
         new_word = ''
-        for i in range(len(smaller)):
-            new_word += word1[i]
-            new_word += word2[i]
-        extension = bigger[len(smaller): ]
-        new_word += extension
+        for i in range(0, min_len):
+            new_word += word1[i] + word2[i]
+
+        if len(word1) > len(word2):
+            new_word += ''.join(word1[min_len:])
+
+        elif len(word1) < len(word2):
+            new_word += ''.join(word2[min_len:])
+
         return new_word
 
+
 if __name__ == "__main__":
-    a = Solution().mergeAlternately(word1='abcde', word2='pqr')
+    a = Solution().mergeAlternately(word1='abc', word2='pqrkl')
     print(a)
