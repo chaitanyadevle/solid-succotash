@@ -1,14 +1,10 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        word_list = s.split(" ")
-        print(word_list)
-        out_s = ''
-        for i in word_list[::-1]:
-            if i:
-                out_s += i + ' '
+        word_list = s.split()
+        out_s = " ".join(word_list[::-1])
         return out_s.strip()
 
 
 if __name__ == "__main__":
-    a = Solution().reverseWords(s='"      hello     world     "')
+    a = Solution().reverseWords(s='      hello     world     ')
     print(a)
